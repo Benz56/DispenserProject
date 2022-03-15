@@ -52,6 +52,24 @@ void loop() {
         }
     }
 
+//    if (Serial.available()) {         // judge whether data has been received
+//        char inChar = Serial.read();         // read one character
+//        inputString += inChar;
+//        if (inChar == '\n') {
+//            stringComplete = true;
+//        }
+//    }
+//    if (stringComplete) {
+//        inputString.trim();
+//        // TODO Remove:
+//        if (inputString.equals("forward")) {
+//            railStepper.step(313); // 1000 == 31.3 mm == 313 steps for 1cm ish.
+//        }
+//
+//        inputString = "";
+//        stringComplete = false;
+//    }
+
     checkJoystick();
 }
 
