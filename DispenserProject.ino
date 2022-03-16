@@ -17,7 +17,7 @@ Stepper railStepper(STEPS_PER_REVOLUTION, stepperPins[RAIL_PINS_INDEX][0], stepp
 Stepper actuatorStepper(STEPS_PER_REVOLUTION, stepperPins[ACTUATOR_PINS_INDEX][0], stepperPins[ACTUATOR_PINS_INDEX][1],
                         stepperPins[ACTUATOR_PINS_INDEX][2], stepperPins[ACTUATOR_PINS_INDEX][3]); // Pins
 
-int currentDispenserPosition = DISPENSERS / 2 + 1; // e.g. 3/2=1.5=1+1=2 or 5/2=2.5=2+1=3. 1-indexed. Starts at
+long currentDispenserPosition = DISPENSERS / 2 + 1; // e.g. 3/2=1.5=1+1=2 or 5/2=2.5=2+1=3. 1-indexed. Starts at
 
 // Actuator
 int actuatorSteps = 3000;
