@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include <Stepper.h> // TODO Maybe use accelstepper library
+#include "SerialRead.h"
 
 #define DISPENSERS 3 // Number of snus containers. Odd number only.
 #define STEPS_PER_REVOLUTION 2048 // 32 * 64
@@ -25,11 +26,9 @@ int actuatorSteps = 3000;
 // Joystick
 int xyzPins[] = {13, 12, 14};   //x,y,z pins
 
-String inputString;
-
-bool stringComplete;
-
 void checkJoystick();
+
+void triggerDispenser(long index);
 
 void setup() {
     Serial.begin(115200);
@@ -44,31 +43,20 @@ void setup() {
 }
 
 void loop() {
-    if (Serial.available() > 0) {
-        long dispenserIndex = Serial.parseInt(); // Read the integer i.e. dispenser to go to.
+    String serialString = getSerialString();
+
+    // Serial functionality
+    if (serialString.length() != 0) {
+        // Serial is dispenser goto command?
+        long dispenserIndex = serialString.toInt(); // Read the integer i.e. dispenser to go to.
         if (dispenserIndex > 0 && dispenserIndex <= DISPENSERS) {
             Serial.printf("Moving to %ld!\n", dispenserIndex);
             triggerDispenser(dispenserIndex);
+        } else {
+            // Can be used for debugging or testing new features via Serial commands.
+            Serial.println(serialString);
         }
     }
-
-//    if (Serial.available()) {         // judge whether data has been received
-//        char inChar = Serial.read();         // read one character
-//        inputString += inChar;
-//        if (inChar == '\n') {
-//            stringComplete = true;
-//        }
-//    }
-//    if (stringComplete) {
-//        inputString.trim();
-//        // TODO Remove:
-//        if (inputString.equals("forward")) {
-//            railStepper.step(313); // 1000 == 31.3 mm == 313 steps for 1cm ish.
-//        }
-//
-//        inputString = "";
-//        stringComplete = false;
-//    }
 
     checkJoystick();
 }
