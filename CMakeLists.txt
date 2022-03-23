@@ -24,6 +24,8 @@ set(${PROJECT_NAME}_SKETCH DispenserProject.ino)
 # For this example (libs will contain additional arduino libraries)
 # An Arduino library my_lib will contain files in libs/my_lib/: my_lib.h, my_lib.cpp + any other cpp files
 # link_directories(${CMAKE_CURRENT_SOURCE_DIR}/)
+set(STEPPER_LIB C:/Users/bemma/OneDrive\ -\ Syddansk\ Universitet/Dokumenter/Arduino/libraries/Stepper/src)
+include_directories(${STEPPER_LIB})
 
 # For nested library sources replace ${LIB_NAME} with library name for each library
 # set(_RECURSE true)
