@@ -4,7 +4,10 @@
 #include <Preferences.h>
 
 #define DISPENSERS 3 // Number of snus containers. Odd number only.
-#define STEPS_PER_REVOLUTION 2048 // 32 * 64
+
+// Limit Switch
+#define LIMIT_SWITCH_PIN 32
+int lsVal;
 
 // Stepper motors
 #define RAIL_PINS_INDEX 0
@@ -19,17 +22,18 @@ Stepper railStepper(STEPS_PER_REVOLUTION, stepperPins[RAIL_PINS_INDEX][0], stepp
 Stepper actuatorStepper(STEPS_PER_REVOLUTION, stepperPins[ACTUATOR_PINS_INDEX][0], stepperPins[ACTUATOR_PINS_INDEX][1],
                         stepperPins[ACTUATOR_PINS_INDEX][2], stepperPins[ACTUATOR_PINS_INDEX][3]); // Pins
 
-long currentDispenserPosition = DISPENSERS / 2 + 1; // e.g. 3/2=1.5=1+1=2 or 5/2=2.5=2+1=3. 1-indexed. Starts at middle or loaded position.
+long currentDispenserPosition = DISPENSERS / 2 + 1; // e.g. 3/2=1.5=1+1=2 or 5/2=2.5=2+1=3. 1-indexed. Starts at middle or loaded position. // TODO position system should be changed.
 
 // Actuator
-int actuatorSteps = 3000;
+int actuatorSteps = 3100;
 
 // Joystick
-int xyzPins[] = {13, 12, 14};   //x,y,z pins
+int xyzPins[] = {13, 14, 15};   //x,y,z pins
 
 // Persistent Storage
 Preferences preferences;
 String positionKey = "position";
+
 
 void setup() {
     Serial.begin(115200);
@@ -41,6 +45,7 @@ void setup() {
     railStepper.setSpeed(9); // Should be 3-20ms between steps.
     actuatorStepper.setSpeed(9); // Should be 3-20ms between steps.
     pinMode(xyzPins[2], INPUT_PULLUP);  // Z axis is a button (No use for now).
+    pinMode(LIMIT_SWITCH_PIN, INPUT_PULLUP);
     preferences.begin("dispenser-app", false);  // Used for saving position.
     currentDispenserPosition = preferences.getLong(positionKey.c_str(), currentDispenserPosition); // Get stored position or default.
     Serial.println(currentDispenserPosition);
@@ -48,7 +53,7 @@ void setup() {
 
 void loop() {
     String serialString = getSerialString();
-
+    Serial.println(serialString);
     // Serial functionality
     if (serialString.length() != 0) {
         // Serial is dispenser goto command?
@@ -61,20 +66,22 @@ void loop() {
             Serial.println(serialString);
         }
     }
-
-    //checkJoystick();
+    checkJoystick();
 }
 
-void checkJoystick() {
+void checkJoystick() { // TODO If used then it should home before accepting orders.
     int xVal = analogRead(xyzPins[0]);
     int yVal = analogRead(xyzPins[1]);
 
     // x == 0 == forward, x == 4095 == back, y == 0 == left, y == 4095 == right.
-    bool joystickInUse = xVal == 0 || xVal == 4095 || yVal == 0 || yVal == 4095;
+    int tolerance = 500;
+    bool joystickInUse = xVal <= tolerance || xVal >= 4095 - tolerance || yVal <= tolerance || yVal >= 4095 - tolerance;
     if (joystickInUse) {
-        Stepper stepper = xVal == 0 || xVal == 4095 ? actuatorStepper : railStepper;
-        int steps = xVal == 0 || yVal == 0 ? -96 : 96;
+        Stepper stepper = xVal <= tolerance || xVal >= 4095 - tolerance ? actuatorStepper : railStepper;
+        int steps = xVal <= tolerance || yVal <= tolerance ? 96 : -96;
         stepper.step(steps);
+    } else if (digitalRead(xyzPins[2]) == LOW) {
+        home(); // Home if joystick is pressed down.
     }
 }
 
@@ -87,5 +94,16 @@ void triggerDispenser(long index) {
         preferences.putLong(positionKey.c_str(), currentDispenserPosition);
     }
     actuatorStepper.step(-actuatorSteps);
-    actuatorStepper.step(actuatorSteps);
+    actuatorStepper.step(actuatorSteps); // TODO Make CNY70 readings and figure out if out.
+}
+
+void home() {
+  lsVal = digitalRead(LIMIT_SWITCH_PIN);
+  if (lsVal != HIGH) {  // Not already homed.
+    while (lsVal == LOW) {
+        railStepper.step(100);
+      lsVal = digitalRead(LIMIT_SWITCH_PIN);
+    }
+      railStepper.step(-200);
+  }
 }
