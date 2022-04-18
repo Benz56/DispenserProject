@@ -26,6 +26,8 @@ set(${PROJECT_NAME}_SKETCH DispenserProject.ino)
 #link_directories(${CMAKE_CURRENT_SOURCE_DIR}/)
 set(STEPPER_LIB C:/Users/bemma/OneDrive\ -\ Syddansk\ Universitet/Dokumenter/Arduino/libraries/Stepper/src)
 include_directories(${STEPPER_LIB})
+set(LED_LIB C:/Users/bemma/OneDrive\ -\ Syddansk\ Universitet/Dokumenter/Arduino/libraries/Freenove_WS2812_Lib_for_ESP32/src)
+include_directories(${LED_LIB})
 
 
 # For nested library sources replace ${LIB_NAME} with library name for each library
