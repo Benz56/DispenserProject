@@ -1,8 +1,7 @@
 #include <Arduino.h>
 #include <Stepper.h> // TODO Maybe use accelstepper library
 #include "SerialRead.h"
-#include "Freenove_WS2812_Lib_for_ESP32.h"
-#include "LED.h"
+#include "DispenserLED.h"
 
 #define DISPENSERS 3 // Number of snus containers. Odd number only.
 #define STEP_GRANULARITY 100 // Steps per Stepper.step() invocation.
@@ -41,10 +40,7 @@ int initialRailCNYReading = 4096; // Is set in setup().
 #define ACTUATOR_DETECTION_THRESHOLD 1500
 
 // LED
-#define LEDS_COUNT 8 // The number of led
-#define LEDS_PIN 2 // define the pin connected to the Freenove 8 led ledStrip
-#define CHANNEL 0 // RMT channel
-Freenove_ESP32_WS2812 ledStrip = Freenove_ESP32_WS2812(LEDS_COUNT, LEDS_PIN, CHANNEL, TYPE_GRB);
+DispenserLED dispenserLed = DispenserLED();
 
 // Joystick
 int xyzJoystickPins[] = {13, 14, 15};   //x,y,z pins
@@ -57,9 +53,9 @@ bool debugging = false;
 bool error = false;
 
 void setup() {
-    ledStrip.begin();
-    ledStrip.setBrightness(5);
-    setColor(orange);
+    dispenserLed.ledStrip.begin();
+    dispenserLed.ledStrip.setBrightness(5);
+    dispenserLed.setColor(orange);
     Serial.begin(115200);
     for (auto &stepperPin: stepperPins) {
         for (int j: stepperPin) {
@@ -213,7 +209,7 @@ bool moveToDispenser(int stepsBetweenCheck) {
         }
         bool didStep = stepRail(stepsBetweenCheck);
         if (!didStep || abs(executedSteps) > expectedSteps) {
-            setColor(red);
+            dispenserLed.setColor(red);
             error = true;
             return false;
         }
@@ -227,7 +223,7 @@ bool moveToDispenser(int stepsBetweenCheck) {
 }
 
 void home() {
-    setColor(orange);
+    dispenserLed.setColor(orange);
     // Home actuator
     // 3150 white, 850 - 1000 black.
     int cnyValue = analogRead(ACTUATOR_CNY_PIN);
@@ -256,7 +252,7 @@ void home() {
             n++;
         } while (cnyValue < ACTUATOR_DETECTION_THRESHOLD && n < 5);
         if (n >= 5) { // Couldn't find white within reasonable range.
-            setColor(red);
+            dispenserLed.setColor(red);
             return;
         }
     }
@@ -271,7 +267,7 @@ void home() {
         stepRail(STEP_GRANULARITY);
         lsVal = digitalRead(LIMIT_SWITCH_PIN);
         if (abs(executedSteps) > RAIL_LENGTH_IN_STEPS + RAIL_LEEWAY_CM * STEPS_PER_CM) {
-            setColor(red);
+            dispenserLed.setColor(red);
             return;
         }
         executedSteps += STEP_GRANULARITY;
@@ -279,7 +275,7 @@ void home() {
     stepRail(-STEP_GRANULARITY * 2);
     railPosition = 0;
     currentDispenserPosition = -1;
-    setColor(green);
+    dispenserLed.setColor(green);
     error = false;
 }
 
@@ -295,7 +291,7 @@ bool actuateTillThreshold(int initialValue, int steps) {
         }
         actuatorStepper.step(steps);
         if (abs(executedSteps) > ACTUATOR_STEPS_LEEWAY + EXPECTED_ACTUATOR_STEPS) {
-            setColor(red);
+            dispenserLed.setColor(red);
             error = true;
             return false;
         }
@@ -315,22 +311,22 @@ bool stepRail(int steps) {
     return canStep;
 }
 
-void setColor(color color) {
-    int colors[3] = {0, 0, 0};
-    switch (color) {
-        case green:
-            colors[1] = 255;
-            break;
-        case orange:
-            colors[0] = 255;
-            colors[1] = 140;
-            break;
-        case red:
-            colors[0] = 255;
-            break;
-    }
-    for (int i = 0; i < LEDS_COUNT; i++) {
-        ledStrip.setLedColorData(i, colors[0], colors[1], colors[2]);
-    }
-    ledStrip.show();
-}
+//void setColor(color color) {
+//    int colors[3] = {0, 0, 0};
+//    switch (color) {
+//        case green:
+//            colors[1] = 255;
+//            break;
+//        case orange:
+//            colors[0] = 255;
+//            colors[1] = 140;
+//            break;
+//        case red:
+//            colors[0] = 255;
+//            break;
+//    }
+//    for (int i = 0; i < LEDS_COUNT; i++) {
+//        ledStrip.setLedColorData(i, colors[0], colors[1], colors[2]);
+//    }
+//    ledStrip.show();
+//}
