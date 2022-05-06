@@ -1,0 +1,124 @@
+moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+moves=2, moveTime=18264, actuateTime=22782, totalTime=41046
+moves=1, moveTime=9784, actuateTime=22782, totalTime=32566
+moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+moves=1, moveTime=8806, actuateTime=22782, totalTime=31588
+moves=2, moveTime=18590, actuateTime=22782, totalTime=41372
+moves=1, moveTime=9784, actuateTime=22782, totalTime=32566
+moves=1, moveTime=9784, actuateTime=22782, totalTime=32566
+moves=1, moveTime=9784, actuateTime=22782, totalTime=32566
+moves=1, moveTime=8479, actuateTime=22782, totalTime=31261
+moves=1, moveTime=7827, actuateTime=22782, totalTime=30609
+moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+moves=1, moveTime=8153, actuateTime=22782, totalTime=30935
+moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+moves=1, moveTime=8153, actuateTime=22782, totalTime=30935
+moves=1, moveTime=10437, actuateTime=22782, totalTime=33219
+moves=2, moveTime=18590, actuateTime=22782, totalTime=41372
+20:57:40.892 -> moves=1, moveTime=8154, actuateTime=22782, totalTime=30936
+20:58:03.696 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+20:58:36.911 -> moves=1, moveTime=10437, actuateTime=22782, totalTime=33219
+20:59:09.450 -> moves=1, moveTime=9784, actuateTime=22782, totalTime=32566
+20:59:42.014 -> moves=1, moveTime=9784, actuateTime=22782, totalTime=32566
+21:00:23.398 -> moves=2, moveTime=18590, actuateTime=22782, totalTime=41372
+21:00:54.313 -> moves=1, moveTime=8154, actuateTime=22782, totalTime=30936
+21:01:27.539 -> moves=1, moveTime=10437, actuateTime=22782, totalTime=33219
+21:02:08.916 -> moves=2, moveTime=18590, actuateTime=22782, totalTime=41372
+21:02:50.309 -> moves=2, moveTime=18590, actuateTime=22782, totalTime=41372
+21:03:22.850 -> moves=1, moveTime=9784, actuateTime=22783, totalTime=32567
+21:03:54.462 -> moves=1, moveTime=8805, actuateTime=22783, totalTime=31588
+21:04:17.242 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:04:40.018 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:05:02.800 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:05:44.161 -> moves=2, moveTime=18589, actuateTime=22783, totalTime=41372
+21:06:25.201 -> moves=2, moveTime=18263, actuateTime=22783, totalTime=41046
+21:06:55.822 -> moves=1, moveTime=7827, actuateTime=22782, totalTime=30609
+21:07:29.016 -> moves=1, moveTime=10436, actuateTime=22782, totalTime=33218
+21:07:51.824 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:08:33.502 -> moves=2, moveTime=18916, actuateTime=22782, totalTime=41698
+21:08:56.318 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:09:27.568 -> moves=1, moveTime=8480, actuateTime=22782, totalTime=31262
+21:09:50.373 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:10:23.554 -> moves=1, moveTime=10437, actuateTime=22782, totalTime=33219
+21:10:46.338 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:11:18.925 -> moves=1, moveTime=9784, actuateTime=22783, totalTime=32567
+21:11:50.490 -> moves=1, moveTime=8805, actuateTime=22783, totalTime=31588
+21:12:13.269 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:12:44.213 -> moves=1, moveTime=8154, actuateTime=22782, totalTime=30936
+21:13:06.998 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:13:38.274 -> moves=1, moveTime=8480, actuateTime=22782, totalTime=31262
+21:14:01.073 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:14:23.848 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:14:46.625 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:15:09.391 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:15:32.186 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:15:54.993 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:16:17.750 -> moves=0, moveTime=0, actuateTime=22784, totalTime=22785
+21:16:40.531 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:17:11.808 -> moves=1, moveTime=8480, actuateTime=22782, totalTime=31262
+21:17:34.571 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:18:07.810 -> moves=1, moveTime=10437, actuateTime=22782, totalTime=33219
+21:18:30.585 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:19:03.150 -> moves=1, moveTime=9784, actuateTime=22782, totalTime=32566
+21:19:35.739 -> moves=1, moveTime=9784, actuateTime=22782, totalTime=32566
+21:20:17.114 -> moves=2, moveTime=18590, actuateTime=22782, totalTime=41372
+21:20:58.455 -> moves=2, moveTime=18590, actuateTime=22782, totalTime=41372
+21:21:39.846 -> moves=2, moveTime=18589, actuateTime=22782, totalTime=41371
+21:22:02.627 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:22:25.420 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:22:56.351 -> moves=1, moveTime=8154, actuateTime=22782, totalTime=30936
+21:23:27.288 -> moves=1, moveTime=8153, actuateTime=22783, totalTime=30936
+21:23:50.058 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:24:21.001 -> moves=1, moveTime=8153, actuateTime=22783, totalTime=30936
+21:24:43.793 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:25:14.687 -> moves=1, moveTime=8154, actuateTime=22782, totalTime=30936
+21:25:37.493 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:26:08.428 -> moves=1, moveTime=8154, actuateTime=22782, totalTime=30936
+21:26:39.344 -> moves=1, moveTime=8153, actuateTime=22783, totalTime=30936
+21:27:10.296 -> moves=1, moveTime=8153, actuateTime=22782, totalTime=30935
+21:27:33.102 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:28:06.292 -> moves=1, moveTime=10436, actuateTime=22782, totalTime=33218
+21:28:47.980 -> moves=2, moveTime=18916, actuateTime=22782, totalTime=41698
+21:29:29.682 -> moves=2, moveTime=18916, actuateTime=22782, totalTime=41698
+21:30:02.272 -> moves=1, moveTime=9784, actuateTime=22783, totalTime=32567
+21:30:25.045 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:30:56.306 -> moves=1, moveTime=8480, actuateTime=22782, totalTime=31262
+21:31:37.348 -> moves=2, moveTime=18264, actuateTime=22782, totalTime=41046
+21:32:18.371 -> moves=2, moveTime=18264, actuateTime=22782, totalTime=41046
+21:32:41.162 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:33:11.769 -> moves=1, moveTime=7828, actuateTime=22782, totalTime=30610
+21:33:42.375 -> moves=1, moveTime=7827, actuateTime=22782, totalTime=30609
+21:34:05.202 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:34:35.783 -> moves=1, moveTime=7827, actuateTime=22782, totalTime=30609
+21:35:06.374 -> moves=1, moveTime=7827, actuateTime=22782, totalTime=30609
+21:35:36.988 -> moves=1, moveTime=7828, actuateTime=22782, totalTime=30610
+21:36:10.214 -> moves=1, moveTime=10436, actuateTime=22782, totalTime=33218
+21:36:33.003 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:37:05.554 -> moves=1, moveTime=9784, actuateTime=22782, totalTime=32566
+21:37:38.148 -> moves=1, moveTime=9785, actuateTime=22782, totalTime=32567
+21:38:10.685 -> moves=1, moveTime=9784, actuateTime=22782, totalTime=32566
+21:38:42.287 -> moves=1, moveTime=8806, actuateTime=22782, totalTime=31588
+21:39:05.083 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:39:46.441 -> moves=2, moveTime=18590, actuateTime=22782, totalTime=41372
+21:40:09.239 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:40:41.814 -> moves=1, moveTime=9784, actuateTime=22782, totalTime=32566
+21:41:13.400 -> moves=1, moveTime=8805, actuateTime=22783, totalTime=31588
+21:41:44.326 -> moves=1, moveTime=8153, actuateTime=22782, totalTime=30935
+21:42:17.526 -> moves=1, moveTime=10436, actuateTime=22782, totalTime=33218
+21:42:40.299 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:43:21.668 -> moves=2, moveTime=18590, actuateTime=22782, totalTime=41372
+21:43:52.601 -> moves=1, moveTime=8153, actuateTime=22782, totalTime=30935
+21:44:23.577 -> moves=1, moveTime=8153, actuateTime=22782, totalTime=30935
+21:45:04.932 -> moves=2, moveTime=18589, actuateTime=22782, totalTime=41371
+21:45:27.691 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:46:08.761 -> moves=2, moveTime=18264, actuateTime=22782, totalTime=41046
+21:46:49.804 -> moves=2, moveTime=18264, actuateTime=22782, totalTime=41046
+21:47:22.348 -> moves=1, moveTime=9784, actuateTime=22782, totalTime=32566
+21:47:54.935 -> moves=1, moveTime=9784, actuateTime=22782, totalTime=32566
+21:48:35.956 -> moves=2, moveTime=18264, actuateTime=22782, totalTime=41046
+21:48:58.759 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:49:39.784 -> moves=2, moveTime=18264, actuateTime=22782, totalTime=41046
+21:50:21.162 -> moves=2, moveTime=18590, actuateTime=22782, totalTime=41372
+21:50:44.603 -> moves=1, moveTime=652, actuateTime=22782, totalTime=23434
+21:51:07.414 -> moves=0, moveTime=0, actuateTime=22785, totalTime=22785
+21:51:37.689 -> moves=1, moveTime=7501, actuateTime=22782, totalTime=30283
