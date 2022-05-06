@@ -19,6 +19,11 @@ Joystick joystick = Joystick(rail, actuator);
 
 unsigned long lastRefreshTime = millis();
 
+// For benchmarking
+bool benchMarking = false;
+unsigned long moveTime = 0;
+unsigned long actuateTime = 0;
+
 bool debugging = false;
 bool error = false;
 
@@ -41,12 +46,17 @@ void setup() {
 void loop() {
     String serialString = getSerialString();
     // Serial functionality
-    if (serialString.length() != 0) {
-        long dispenserIndex = serialString.toInt();
-        if (dispenserIndex > 0 && dispenserIndex <= DISPENSERS) {
-            Serial.printf("Moving to %ld!\n", dispenserIndex);
+    if (serialString.length() != 0 || benchMarking) {
+        long dispenserIndex = !benchMarking ? serialString.toInt() : random(1, DISPENSERS + 1);
+        if (serialString == "benchmark") {
+            benchMarking = !benchMarking;
+        } else if (dispenserIndex > 0 && dispenserIndex <= DISPENSERS) {
+            unsigned long now = millis();
+            int timesToMove = rail.getCurrentDispenserPosition() == -1 ? dispenserIndex : dispenserIndex - abs(rail.getCurrentDispenserPosition());
             if (!triggerDispenser(dispenserIndex)) {
                 dispenserLed.setColor(red);
+            } else if (benchMarking) {
+                Serial.printf("moves=%ld, moveTime=%ld, actuateTime=%ld, totalTime=%ld\n", abs(timesToMove), moveTime, actuateTime, millis() - now);
             }
         } else if (serialString == "info") {
             printInfo();
@@ -95,9 +105,7 @@ void printInfo() {
 }
 
 bool triggerDispenser(int index) {
-    if (error) {
-        return false;
-    }
+    if (error) return false;
     if (shouldHome) {
         dispenserLed.setColor(orange);
         if (!rail.home()) {
@@ -107,10 +115,14 @@ bool triggerDispenser(int index) {
     }
     shouldHome = false;
 
+    unsigned long now = millis();
     bool movedCorrectly = rail.moveToDispenser(index);
     if (movedCorrectly && !error) {
+        moveTime = millis() - now;
+        now = millis();
         movedCorrectly = actuator.dispense();
         if (movedCorrectly && !error) {
+            actuateTime = millis() - now;
             rail.setCurrentDispenserPosition(index);
         }
     }

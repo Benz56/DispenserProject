@@ -1,7 +1,7 @@
 #include "Actuator.h"
 
 #define EXPECTED_ACTUATOR_STEPS 3500
-#define ACTUATOR_STEPS_LEEWAY 700
+#define ACTUATOR_STEPS_LEEWAY 1000
 #define ACTUATOR_DETECTION_THRESHOLD 1500
 
 Stepper actuatorStepper(STEPS_PER_REVOLUTION,
@@ -43,7 +43,7 @@ bool Actuator::home() {
     // 3150 white, 850 - 1000 black.
     int cnyValue = analogRead(ACTUATOR_CNY_PIN);
 
-    if (cnyValue > ACTUATOR_DETECTION_THRESHOLD) { // Current at white.
+    if (cnyValue > ACTUATOR_DETECTION_THRESHOLD) { // Current at white. Slightly advanced.
         if (!actuateTillThreshold(cnyValue, STEP_GRANULARITY, true)) {
             return false;
         }
